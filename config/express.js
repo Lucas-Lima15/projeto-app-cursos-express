@@ -1,16 +1,18 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-
-const homeController = require('../app/controllers/home')();
+var express = require('express');
+var bodyParser = require('body-parser');
+var load = require('express-load');
 
 module.exports = function() {
-    const app = express();
+    var app = express();
 
     app.set('port', 3000);
     app.use(express.static('./public'));
     app.use(bodyParser.json());
 
-    app.get('/', homeController.index);
+    load('models', {cwd: 'app'})
+        .then('controllers')
+        .then('routes')
+        .into(app);
 
     return app;
 };

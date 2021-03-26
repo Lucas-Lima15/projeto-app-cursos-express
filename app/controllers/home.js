@@ -1,7 +1,7 @@
 module.exports = function(app) {
-    const controller = {
+    var controller = {
         index: function(req, res) {
-            res.json({'message': 'ola'})
+            res.json({'message': 'Treinaweb'})
         }
     }
 
