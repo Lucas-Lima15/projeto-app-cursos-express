@@ -42,6 +42,17 @@
         .catch(() => {
             console.error('ocorreu um erro!');
         });
+
+        function login() {
+            fetch('/login', {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({name: 'joao', password: 'joao1234'})
+            })
+        }
     }
 </script>
 
